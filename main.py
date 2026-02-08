@@ -75,7 +75,8 @@ class SandwichMachine:
     def make_sandwich(self, sandwich_size, order_ingredients):
         """Deduct the required ingredients from the resources.
            Hint: no output"""
-
+        for ingredient in order_ingredients:
+            self.machine_resources[ingredient] -= order_ingredients[ingredient]
 
 ### Make an instance of SandwichMachine class and write the rest of the codes ###
 
@@ -100,3 +101,17 @@ while (is_on):
             payment = machine.process_coins()
             if (machine.transaction_result(payment, recipe["cost"])):
                 machine.make_sandwich("small", recipe["ingredients"])
+
+    elif (userInput == "medium"):
+        recipe = recipes["medium"]
+        if (machine.check_resources(recipe["ingredients"])):
+            payment = machine.process_coins()
+            if (machine.transaction_result(payment, recipe["cost"])):
+                machine.make_sandwich("medium", recipe["ingredients"])
+
+    elif (userInput == "large"):
+        recipe = recipes["large"]
+        if (machine.check_resources(recipe["ingredients"])):
+            payment = machine.process_coins()
+            if (machine.transaction_result(payment, recipe["cost"])):
+                machine.make_sandwich("large", recipe["ingredients"])
