@@ -101,6 +101,7 @@ while (is_on):
             payment = machine.process_coins()
             if (machine.transaction_result(payment, recipe["cost"])):
                 machine.make_sandwich("small", recipe["ingredients"])
+                print(userInput + " sandwich is ready. Bon appetit!")
 
     elif (userInput == "medium"):
         recipe = recipes["medium"]
@@ -108,6 +109,7 @@ while (is_on):
             payment = machine.process_coins()
             if (machine.transaction_result(payment, recipe["cost"])):
                 machine.make_sandwich("medium", recipe["ingredients"])
+                print(userInput + " sandwich is ready. Bon appetit!")
 
     elif (userInput == "large"):
         recipe = recipes["large"]
@@ -115,3 +117,6 @@ while (is_on):
             payment = machine.process_coins()
             if (machine.transaction_result(payment, recipe["cost"])):
                 machine.make_sandwich("large", recipe["ingredients"])
+                print(userInput + " sandwich is ready. Bon appetit!")
+    else:
+        print("Invalid input.")
