@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-from config import Conf
+from .config import Conf
 from urllib.parse import quote_plus
 
 SQLALCHEMY_DATABASE_URL = (f"mysql+pymysql://{Conf.user}:"
