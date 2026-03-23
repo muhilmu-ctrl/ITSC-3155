@@ -17,18 +17,18 @@ def create(db: Session, order_detail: schemas.OrderDetailCreate):
 def read_all(db: Session):
     return db.query(models.OrderDetail).all()
 
-def read_one(db: Session, db_order_detail):
-    return db.query(models.OrderDetail).filter(models.OrderDetail.id == db_order_detail).first()
+def read_one(db: Session, order_detail_id):
+    return db.query(models.OrderDetail).filter(models.OrderDetail.id == order_detail_id).first()
 
-def update(db: Session, db_order_detail: int, order_detail: schemas.OrderDetailCreate):
-    db_order_detail = db.query(models.OrderDetail).filter(models.OrderDetail.id == db_order_detail)
+def update(db: Session, order_detail_id: int, order_detail: schemas.OrderDetailUpdate):
+    db_order_detail = db.query(models.OrderDetail).filter(models.OrderDetail.id == order_detail_id)
     update_data = order_detail.model_dump(exclude_unset=True)
     db_order_detail.update(update_data, synchronize_session=False)
     db.commit()
     return db_order_detail.first()
 
-def delete(db: Session, db_order_detail: int):
-    db_order_detail = db.query(models.OrderDetail).filter(models.OrderDetail.id == db_order_detail)
+def delete(db: Session, order_detail_id: int):
+    db_order_detail = db.query(models.OrderDetail).filter(models.OrderDetail.id == order_detail_id)
     db_order_detail.delete(synchronize_session=False)
     db.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)
