@@ -1,5 +1,5 @@
 from fastapi.testclient import TestClient
-from main import app
+from sheep_main import app
 import sys
 import os
 # Add the project root (sheep directory) to sys.path
